@@ -165,6 +165,10 @@ func main() {
 			log.Printf("Model not found: %v\n", err)
 			os.Exit(10)
 		}
+		if status.Code(err) == codes.ResourceExhausted {
+                        log.Printf("Resource Exhausted: %v\n", err)
+                        os.Exit(4)
+                }
 		log.Printf("Error calling tfs: %v\n", err)
 		os.Exit(3)
 	}
